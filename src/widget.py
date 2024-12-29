@@ -1,10 +1,13 @@
 import masks
 
+
 def mask_account_card(card_account_info: str) -> str:
-    """Принимает строку, содержащую тип и номер карты или счета
+    """
+    Принимает строку, содержащую тип и номер карты или счета
     Возвращает строку с замаскированным номером
     :param card_account_info: str
-    :return: str    """
+    :return: str
+    """
     separated_info = card_account_info.split(" ")
     number = int(separated_info[-1])
     name = separated_info[:-1:]
@@ -18,10 +21,12 @@ def mask_account_card(card_account_info: str) -> str:
 
 
 def get_date(time_info: str) -> str:
-    """Принимает на вход строку с датой в формате "2024-03-11T02:26:18.671407"
+    """
+    Принимает на вход строку с датой в формате "2024-03-11T02:26:18.671407"
     Возвращает строку с датой в формате "ДД.ММ.ГГГГ" ("11.03.2024")
     :param time_info: str
-    :return: str"""
+    :return: str
+    """
     date, time = time_info.split("T")
     year, month, day = date.split("-")
 

@@ -2,6 +2,8 @@ def get_mask_card_number(card_number: int) -> str:
     """
     Принимает на вход номер карты в виде числа.
     Возвращает маску по правилу: XXXX XX** **** XXXX
+    :param card_number: int
+    :return: str
     """
     masked_card_digits_list = []
 
@@ -21,6 +23,8 @@ def get_mask_account(account_number: int) -> str:
     """
     Принимает на вход номер счета в виде числа.
     Возвращает маску номера по правилу **XXXX
+    :param account_number: int
+    :return: str
     """
     account_last_six_digits = str(account_number)[-6::]
     masked_account_digits_list = []
