@@ -1,4 +1,9 @@
-import masks
+import os
+
+if os.path.exists("masks.py"):
+    import masks
+elif os.path.exists("src/masks.py"):
+    from src import masks
 
 
 def mask_account_card(card_account_info: str) -> str:
