@@ -43,8 +43,3 @@ def get_mask_account(account_number: int) -> str:
             masked_account_digits_list.append(account_last_six_digits[index])
 
     return "".join(masked_account_digits_list)
-
-
-if __name__ == "__main__":
-    print(get_mask_card_number(1234567812345678))
-    print(get_mask_account(34567091367549208))

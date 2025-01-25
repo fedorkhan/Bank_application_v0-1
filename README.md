@@ -26,8 +26,16 @@ print(widget.mask_account_card("Visa Gold 5999414228426353"))
 print(f"Отмененные: {processing.filter_by_state(check_operation_list, state='CANCELED')}")
 #Сортировка операций в обратном порядке
 print(f"В обратном порядке:\n {processing.sort_by_date(check_operation_list, is_reverse_order=False)}")
+
 ```
+
+## Результаты тестирования
+Тестирование модулей программы проводилось при помощи фреймворка *pytest*.
+
+Примеры тестов находятся в пакете ` /tests/ `. 
+
+Результаты по оценке покрытия кода тестами в формате `.html` находятся в `/htmlcov/index.html`
 
 ## Документация:
 
-Для получения дополнительной информации обратитесь к [документации](docs/README.md).
+Для получения дополнительной информации обратитесь к [документации](README.md).
