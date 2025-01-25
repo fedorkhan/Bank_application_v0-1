@@ -14,10 +14,10 @@ def test_get_mask_card_number(card_number, mask):
     assert get_mask_card_number(card_number) == mask
 
 
-with pytest.raises(IndexError) as card_length_error:
+with pytest.raises(IndexError) as CardLengthError:
     get_mask_card_number(123456781234)
 
-with pytest.raises(IndexError) as card_length_error:
+with pytest.raises(IndexError) as CardLengthError:
     get_mask_card_number("")
 
 #Проверка работоспособности функции 'get_mask_account()'
@@ -29,8 +29,8 @@ def test_get_mask_account(account_number, mask):
     assert get_mask_account(account_number) == mask
 
 
-with pytest.raises(IndexError) as account_length_error:
+with pytest.raises(IndexError) as AccountLengthError:
     get_mask_account(12345)
 
-with pytest.raises(IndexError) as account_length_error:
+with pytest.raises(IndexError) as AccountLengthError:
     get_mask_account("")

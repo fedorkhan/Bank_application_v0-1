@@ -30,6 +30,9 @@ def get_date(time_info: str) -> str:
     :param time_info: str
     :return: str
     """
+    if 'T' not in time_info or time_info.count('-') != 2:
+        raise ValueError("Неверный формат времени. Должен быть '2024-03-11T02:26:18.671407'")
+
     date, time = time_info.split("T")
     year, month, day = date.split("-")
 
