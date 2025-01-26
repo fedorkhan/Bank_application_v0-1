@@ -14,13 +14,31 @@
 ## Примеры использования функций
 
 ```
-from src import widget
+from src import generators, widget
 
 print(widget.get_date("2024-03-11T02:26:18.671407"))
 print(widget.mask_account_card("Счет 64686473678894779589"))
 print(widget.mask_account_card("Visa Gold 5999414228426353"))
 print(widget.mask_account_card("Maestro 1596837868705199"))
+
+#генерация номеров карт в диапазоне от start=12378568569997 до stop=12378568569999:
+print(list(generators.card_number_generator(12378568569997, 12378568569999)))
+
+#Фильтр по валюте операций из списка транзакций 'transactions' по доллару 'USD' и рублю 'RUB'
+print(list(generators.filter_by_currency(transactions, "USD")))
+print(list(generators.filter_by_currency(transactions, "RUB")))
+
+#вывод деталей по операциям из списка транзакций 'transactions'
+obtained_descriptions = generators.transaction_descriptions(transactions)
+for index in range(len(transactions)):
+    print(next(obtained_descriptions))
 ```
+## Тестирование
+Тестирование проводилось при помощи фреймворка `pytest`.
+
+Степень покрытия кода тестами оценивалась при помощи библиотеки `pytest-coverage`. 
+Тесты находятся в папке `/tests/test_generators.py`, а результаты покрытия тестами кода -- в `/htmlcov/index.html`
+
 
 ## Документация:
 
