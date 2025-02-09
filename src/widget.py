@@ -1,8 +1,6 @@
 import os
 
-if os.path.exists("masks.py"):
-    import masks
-elif os.path.exists("src/masks.py"):
+if os.path.exists("src/masks.py"):
     from src import masks
 
 
@@ -32,16 +30,12 @@ def get_date(time_info: str) -> str:
     :param time_info: str
     :return: str
     """
+    if 'T' not in time_info or time_info.count('-') != 2:
+        raise ValueError("Неверный формат времени. Должен быть '2024-03-11T02:26:18.671407'")
+
     date, time = time_info.split("T")
     year, month, day = date.split("-")
 
     formatted_date = ".".join([day, month, year])
 
     return formatted_date
-
-
-if __name__ == "__main__":
-    print(get_date("2024-03-11T02:26:18.671407"))
-    print(mask_account_card("Счет 64686473678894779589"))
-    print(mask_account_card("Visa Gold 5999414228426353"))
-    print(mask_account_card("Maestro 1596837868705199"))
