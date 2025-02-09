@@ -185,6 +185,8 @@ def usd_transactions() -> list[dict]:
         ]
     )
 
+
+@pytest.fixture
 def time_example1() -> str:
     return "2024-03-11T02:26:18.671407"
 
