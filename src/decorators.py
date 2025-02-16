@@ -43,16 +43,3 @@ def log(filename=None):
         return inner
 
     return wrapper
-
-
-if __name__ == "__main__":
-    @log()
-    def f1(args):
-        if args == "err":
-            raise ValueError
-        else:
-            return "ewroiewutouwort"
-
-
-    f1("kjfslkds")
-    f1("err")
