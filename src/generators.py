@@ -1,6 +1,9 @@
-from typing import Iterator, Generator
+from typing import Generator, Iterator
+
+from src.decorators import log
 
 
+@log()
 def filter_by_currency(transactions_list: list[dict], currency: str) -> Iterator:
     """
     Принимает на вход список словарей, представляющих транзакции
@@ -14,6 +17,7 @@ def filter_by_currency(transactions_list: list[dict], currency: str) -> Iterator
             yield transaction
 
 
+@log()
 def transaction_descriptions(transactions_list: list[dict]) -> Iterator:
     """
     Принимает список словарей с транзакциями.
@@ -29,6 +33,7 @@ def transaction_descriptions(transactions_list: list[dict]) -> Iterator:
             yield description
 
 
+@log()
 def card_number_generator(start: int, stop: int) -> Generator:
     """
     Принимает начальное 'start' и конечное 'stop' значения для генерации диапазона номеров.

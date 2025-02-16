@@ -1,5 +1,5 @@
-from time import time
 from functools import wraps
+from time import time
 
 
 def log(filename=None):
@@ -13,8 +13,11 @@ def log(filename=None):
                 if filename1 is None:
                     print(log_data)
                 else:
-                    with open(filename1, "w", encoding="utf-8") as file1:
+                    try:
+                        file1 = open(filename1, "w", encoding="utf-8")
                         file1.write(log_data)
+                    except PermissionError:
+                        print(f"Cannot write data to {filename1}!")
 
             log_data_list = []
 
@@ -29,6 +32,7 @@ def log(filename=None):
                 stop_time = time()
                 log_data_list.append(f"Успешно. Результат работы функции: {result}")
                 log_data_list.append(f"Конец работы программы: {stop_time}")
+                log_data_list.append("\n")
                 logger(log_data_list, filename)
                 return result
 
@@ -38,6 +42,7 @@ def log(filename=None):
                 stop_time = time()
                 log_data_list.append(error_message)
                 log_data_list.append(f"Конец работы программы: {stop_time}")
+                log_data_list.append("\n")
                 logger(log_data_list, filename)
 
         return inner
