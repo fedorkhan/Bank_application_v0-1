@@ -3,6 +3,12 @@ from time import time
 
 
 def log(filename=None):
+    """
+        Автоматически логирует начало и конец выполнения функции,
+        а также ее результаты или возникшие ошибки.
+        Выводит эти данные либо в файл, заданный необязательным параметром 'filename',
+        либо в консоль, если параметр filename не задан
+    """
     def wrapper(function):
         @wraps(function)
         def inner(*args, **kwargs):
