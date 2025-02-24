@@ -1,4 +1,6 @@
-from src import generators, processing, widget
+from src import generators, processing, utils, widget
+
+print(utils.transactions_json_reader("data/operations.json"))
 
 print(widget.get_date("2024-03-11T02:26:18.671407"))
 print(widget.mask_account_card("Счет 64686473678894779589"))
