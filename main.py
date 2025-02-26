@@ -1,7 +1,7 @@
 from src import external_api, generators, processing, utils, widget
 
 transactions = utils.transactions_json_reader("data/operations.json")[:5:]
-USD_transaction = transactions[1]
+USD_transaction = transactions[0]
 
 print(USD_transaction)
 
