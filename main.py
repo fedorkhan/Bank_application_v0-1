@@ -1,5 +1,10 @@
 from src import external_api, generators, masks, processing, utils, widget
 
+try:
+    transactions2 = utils.transactions_json_reader("data/operations2.json")
+except FileNotFoundError:
+    pass
+
 transactions = utils.transactions_json_reader("data/operations.json")[:5:]
 USD_transaction = transactions[0]
 
