@@ -1,4 +1,4 @@
-from src import external_api, generators, processing, utils, widget
+from src import external_api, generators, masks, processing, utils, widget
 
 transactions = utils.transactions_json_reader("data/operations.json")[:5:]
 USD_transaction = transactions[0]
@@ -11,6 +11,13 @@ print(widget.get_date("2024-03-11T02:26:18.671407"))
 print(widget.mask_account_card("Счет 64686473678894779589"))
 print(widget.mask_account_card("Visa Gold 5999414228426353"))
 print(widget.mask_account_card("Maestro 1596837868705199"))
+
+try:
+    print(masks.get_mask_card_number(12341234123456))
+except IndexError:
+    pass
+print(masks.get_mask_card_number(1234123412345687))
+
 
 check_operation_list = [{'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
                         {'id': 41428839, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
