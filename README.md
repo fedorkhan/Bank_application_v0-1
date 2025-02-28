@@ -5,17 +5,31 @@
 Виджет банковского приложения - это backend-часть приложения на Python для отображения различной информации клиенту банка
 Проект реализуется в рамках заданий по курсу *Python-разаработчик*
 
+### 26.02.2025
+
+Функция `transaction_amount(transaction)` в модуле `external_api.py` 
+служит для вывода суммы транзакции в рублях. Если операция проходила 
+в иностранной валюте происходит обращение к сайту https://apilayer.com/
+
+Функция `transaction_json_reader(filename)` возвращает список транзакций 
+из файла `data/operations.json`
+
 ## Установка
 
 1. Работа с виртуальным окружением производится при помощи менеджера пакетов Poetry
 Перед началаом установки самого приложения убедитесь, что у вас утсановлен и подключен Poetry
 2. Клонируйте репозиторий ` https://github.com/fedorkhan/Bank_application_v0-1.git `
+3. Для корректной работы функции конвертации валюты понадобится доступ к сайту https://apilayer.com/
+Убедитесь, что Вы созадли файл `.env` и указали корректный API-ключ 
+(см. файл `.env.example` в корневой директории)
 
 ## Примеры использования функций
 
 ```
-from src import generators, processing, widget
+from src import generators, processing, utils, widget
 
+#Пример работы функции, считыавющей информацию из json-файла:
+print(utils.transactions_json_reader("data/operations.json"))
 
 print(widget.get_date("2024-03-11T02:26:18.671407"))
 
