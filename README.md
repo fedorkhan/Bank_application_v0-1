@@ -12,7 +12,12 @@
 в иностранной валюте происходит обращение к сайту https://apilayer.com/
 
 Функция `transaction_json_reader(filename)` возвращает список транзакций 
-из файла `data/operations.json`
+из файла `data/operations.json`.
+
+### 27.02.2025
+
+Реализовано логирование модулей `masks.py` и `utils.py` с использованием 
+методов библиотеки `logging`
 
 ## Установка
 
