@@ -55,7 +55,7 @@ def test_csv_reader_success():
     """
 
     check_transactions = """id;state;date;amount;currency_name;currency_code;from;to;description
-3598919;EXECUTED;2020-12-06T23:00:58Z;29740;Peso;COP;Discover 3172601889670065;Discover 0720428384694643;Перевод с карты на карту"""
+3598919;EXECUTED;2020-12-06T23:00:58Z;29740;Peso;COP;Discover 3172601889670065;Discover 0720428384694643;Перевод"""
 
     with patch('builtins.open', mock_open(read_data=check_transactions)):
         assert csv_reader("data/transactions.csv") == [{
@@ -67,7 +67,7 @@ def test_csv_reader_success():
             'currency_code': 'COP',
             'from': 'Discover 3172601889670065',
             'to': 'Discover 0720428384694643',
-            'description': 'Перевод с карты на карту'
+            'description': 'Перевод'
         }]
 
 
