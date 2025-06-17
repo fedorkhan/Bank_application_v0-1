@@ -1,4 +1,9 @@
-from src import external_api, generators, masks, processing, utils, widget
+from src import csv_excel_readers, external_api, generators, masks, processing, utils, widget
+
+csv_transactions_check = csv_excel_readers.csv_reader("data/transactions.csv")
+print(csv_transactions_check[:3])
+excel_transactions_check = csv_excel_readers.excel_reader("data/transactions_excel.xlsx")
+print(excel_transactions_check[:3])
 
 try:
     transactions2 = utils.transactions_json_reader("data/operations2.json")
