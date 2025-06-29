@@ -42,7 +42,8 @@ def process_bank_search(data: list[dict], search: str) -> list[dict]:
     Принимает список словарей с данными о банковских операциях и строку поиска.
     Возвращает список словарей, у которых в описании есть данная строка.
     """
-    found_operations = [transaction for transaction in data if re.search(search, transaction["description"].lower())]
+    found_operations = [transaction for transaction in data
+                        if re.search(search.lower(), transaction.get("description", "").lower())]
 
     return found_operations
 
