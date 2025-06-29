@@ -1,4 +1,4 @@
-from src import csv_excel_readers, external_api, generators, masks, processing, re_collections, utils, widget
+from src import csv_excel_readers, external_api, generators, masks, processing, utils, widget
 
 csv_transactions_check = csv_excel_readers.csv_reader("data/transactions.csv")
 print(csv_transactions_check[:3])
@@ -6,8 +6,10 @@ excel_transactions_check = csv_excel_readers.excel_reader("data/transactions_exc
 print(excel_transactions_check[:3])
 
 
-print(re_collections.process_bank_search(excel_transactions_check[:10], "карты"))
+print(processing.process_bank_search(excel_transactions_check[:10], "карты"))
 
+print(processing.process_bank_operations(excel_transactions_check[:1000],
+                                ["Перевод организации", "Открытие вклада", "Перевод со счета на счет"]))
 # try:
 #     transactions2 = utils.transactions_json_reader("data/operations2.json")
 # except FileNotFoundError:

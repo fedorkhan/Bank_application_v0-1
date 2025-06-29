@@ -45,3 +45,14 @@ def process_bank_search(data: list[dict], search: str) -> list[dict]:
     found_operations = [transaction for transaction in data if re.search(search, transaction["description"].lower())]
 
     return found_operations
+
+
+def process_bank_operations(data: list[dict], categories: list) -> dict:
+    """
+    Принимает список словарей с данными о банковских операциях и список категорий операций.
+    Возвращает словарь, в котором ключи — это названия категорий, а значения — это количество операций в каждой
+    """
+    counted_operations = Counter([transaction["description"] for transaction in data
+                                  if transaction["description"] in categories])
+
+    return dict(counted_operations)
