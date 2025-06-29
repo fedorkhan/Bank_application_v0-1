@@ -53,7 +53,7 @@ def process_bank_operations(data: list[dict], categories: list) -> dict:
     Принимает список словарей с данными о банковских операциях и список категорий операций.
     Возвращает словарь, в котором ключи — это названия категорий, а значения — это количество операций в каждой
     """
-    counted_operations = Counter([transaction["description"] for transaction in data
-                                  if transaction["description"] in categories])
+    counted_operations = Counter([transaction.get("description") for transaction in data
+                                  if transaction.get("description", "") in categories])
 
     return dict(counted_operations)
