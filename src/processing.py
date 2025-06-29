@@ -1,3 +1,7 @@
+import re
+from collections import Counter
+
+
 def filter_by_state(operations_list: list[dict], state: str = 'EXECUTED') -> list[dict]:
     """
     Принимает список словарей и опционально значение для ключа state (по умолчанию 'EXECUTED')
@@ -31,3 +35,13 @@ def sort_by_date(operations_list: list[dict], is_reverse_order: bool = True) -> 
     sorted_operations_list = sorted(operations_list, key=lambda x: x['date'], reverse=is_reverse_order)
 
     return sorted_operations_list
+
+
+def process_bank_search(data: list[dict], search: str) -> list[dict]:
+    """
+    Принимает список словарей с данными о банковских операциях и строку поиска.
+    Возвращает список словарей, у которых в описании есть данная строка.
+    """
+    found_operations = [transaction for transaction in data if re.search(search, transaction["description"].lower())]
+
+    return found_operations
