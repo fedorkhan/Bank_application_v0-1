@@ -1,4 +1,4 @@
-from src import csv_excel_readers, external_api, generators, masks, processing, utils, widget
+from src import csv_excel_readers, external_api, generators, processing, utils, widget
 
 
 def main():
@@ -122,9 +122,10 @@ def main():
             # Для работы с *.json файлами
     else:
         print("Не найдено ни одной транзакции, подходящей под ваши"
-                "условия фильтрации")
+              "условия фильтрации")
 
 # print(external_api.transaction_amount(USD_transaction))
+
 
 if __name__ == "__main__":
     main()
