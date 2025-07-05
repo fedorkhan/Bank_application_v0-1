@@ -3,7 +3,6 @@ from typing import Generator, Iterator
 from src.decorators import log
 
 
-@log()
 def filter_by_currency(transactions_list: list[dict], currency: str) -> Iterator:
     """
     Принимает на вход список словарей, представляющих транзакции
@@ -13,8 +12,12 @@ def filter_by_currency(transactions_list: list[dict], currency: str) -> Iterator
     :return:
     """
     for transaction in transactions_list:
-        if transaction.get("operationAmount").get("currency").get("code") == currency:
-            yield transaction
+        try:
+            if transaction.get("operationAmount").get("currency").get("code") == currency:
+                yield transaction
+        except AttributeError:
+            if transaction.get("currency_code") == currency:
+                yield transaction
 
 
 @log()

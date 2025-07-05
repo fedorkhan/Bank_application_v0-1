@@ -8,7 +8,7 @@ file_handler.setFormatter(file_formatter)
 logger1.addHandler(file_handler)
 
 
-def get_mask_card_number(card_number: int) -> str:
+def get_mask_card_number(card_number: str) -> str:
     """
     Принимает на вход номер карты в виде 16-значного числа.
     Возвращает маску по правилу: XXXX XX** **** XXXX
@@ -19,18 +19,18 @@ def get_mask_card_number(card_number: int) -> str:
 
     logger1.info(f"Начало работы функции `get_mask_card_number({card_number})`")
 
-    if len(str(card_number)) != 16:
+    if len(card_number) != 16:
         logger1.critical("В номере карты не 16 цифр. Дальнейшая работа функции невозможна")
         raise IndexError("В номере карты не 16 цифр")
 
     masked_card_digits_list = []
     logger1.info("В номере карты 16 цифр. Запуск процедуры маскировки")
 
-    for index in range(len(str(card_number))):
+    for index in range(len(card_number)):
         if 6 <= index <= 11:
             masked_card_digits_list.append("*")
         else:
-            masked_card_digits_list.append(str(card_number)[index])
+            masked_card_digits_list.append(card_number[index])
 
         if (index + 1) % 4 == 0:
             masked_card_digits_list.append(" ")
@@ -42,7 +42,7 @@ def get_mask_card_number(card_number: int) -> str:
     return masked_card
 
 
-def get_mask_account(account_number: int) -> str:
+def get_mask_account(account_number: str) -> str:
     """
     Принимает на вход номер счета в виде числа.
     Возвращает маску номера по правилу **XXXX
@@ -52,11 +52,11 @@ def get_mask_account(account_number: int) -> str:
     """
     logger1.info(f"Начало работы функции `get_mask_account({account_number})`")
 
-    if len(str(account_number)) < 6:
+    if len(account_number) < 6:
         logger1.critical("В номере счета менее 6 цифр. Дальнейшая работа функции невозможна")
         raise IndexError("В номере счета менее 6 цифр")
 
-    account_last_six_digits = str(account_number)[-6::]
+    account_last_six_digits = account_number[-6::]
     masked_account_digits_list = []
     for index in range(len(account_last_six_digits)):
         if index < 2:
