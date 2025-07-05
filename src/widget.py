@@ -12,7 +12,7 @@ def mask_account_card(card_account_info: str) -> str:
     :return: str
     """
     separated_info = card_account_info.split(" ")
-    number = int(separated_info[-1])
+    number = separated_info[-1]
     name = separated_info[:-1:]
 
     if "Счет" in name:
