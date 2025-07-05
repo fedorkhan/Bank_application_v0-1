@@ -106,12 +106,20 @@ def main():
         # Форматированный вывод в консоль
         for transaction in description_filtered_transactions:
             print(f"{widget.get_date(transaction.get('date'))} {transaction.get('description')}")
-            if not transaction.get('from', 0):
+
+            if type(transaction.get('from')) == str:
                 print(f"{widget.mask_account_card(transaction.get('from'))} -> "
-                        f"{widget.mask_account_card(transaction.get('to'))}")
+                      f"{widget.mask_account_card(transaction.get('to'))}")
             else:
                 print(f"{widget.mask_account_card(transaction.get('to'))}")
-            print(f"Сумма: {transaction.get('amount')} {transaction.get('currency_code')}\n")
+
+            if type(transaction.get("operationAmount")) == dict:
+                print(f"Сумма: {transaction.get('operationAmount').get('amount')} "
+                      f"{transaction.get('operationAmount').get('currency').get('code')}\n")
+            else:
+                print(f"Сумма: {transaction.get('amount')} {transaction.get('currency_code')}\n")
+
+            # Для работы с *.json файлами
     else:
         print("Не найдено ни одной транзакции, подходящей под ваши"
                 "условия фильтрации")
